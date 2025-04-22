@@ -44,12 +44,7 @@
         Secció 1
     </div>
    <div id="seccio_2" class="seccio">
-      <canvas id="canvas">
-<div id="div_gran">
-<img id="foto_gran" onclick="retorn_a_seccio()" />
-</div>
-         </canvas>
-     <div id="div_foto">    
+      <div id="div_foto">    
     <img id="foto" onclick="mostra_foto(0)">
     <i id="icona_camera" class="fa-solid fa-image"></i>    
   </div>
@@ -57,9 +52,13 @@
       <label for="obturador">    
         <i class="fa-solid fa-circle-dot"></i>    
       </label>
-      <input type="file" accept="image/*" id="obturador" capture="camera" /> 
+      <input type="file" accept="image/*" id="obturador" capture="camera"> 
 <i id="desa" class="fa-solid fa-check" onclick="desa_foto()"></i>  
   </div>
+      <canvas id="canvas"></canvas>
+<div id="div_gran">
+  <img id="foto_gran">
+</div>
 </div>
        <div id="seccio_3" class="seccio">
   <div id="llista_titol">    
