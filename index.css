@@ -164,6 +164,20 @@ body {
 #prediccions {
     font-size: 3vh;
 }
+#seccio_6 {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#div_diagrama {
+    width: 80vmin;
+    font-size: 5vh;   
+    text-align: center;
+}
+#div_valor {
+    font-size: 15vh; 
+    margin-top: 5vh;  
+}
 @media (orientation: landscape) {
      body {
         flex-direction: row;    /* sobreescriu la declaració flex-direction: column; */
@@ -199,6 +213,18 @@ body {
         height: 70vmin;
     }
     #seccio_5 {
+        flex-direction: row;
+    }
+    #seccio_6 {
+        flex-direction: row;
+    }
+    #seccio_1 {
+        flex-direction: row;
+    }
+    #seccio_3 {
+        flex-direction: row;
+    }
+    #seccio_4 {
         flex-direction: row;
     }
 }
