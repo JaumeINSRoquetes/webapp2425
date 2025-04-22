@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script src="index.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
     <title>    
         Webapp del curs 24-25
     </title>
@@ -70,7 +72,7 @@
 </div>
        <div id="seccio_5" class="seccio">
       <div>
-        <i id="icona_video" class="fa-solid fa-video"></i>    
+        <i id="icona_video" class="fa-solid fa-video" onclick="inicia_video()"></i>    
         <div id="webcam-container"></div>    
       </div>
       <div id="reconeixement">    
