@@ -43,23 +43,21 @@
     <div id="seccio_1" class="seccio">    
         Secció 1
     </div>
-   <div id="seccio_2" class="seccio">
-      <div id="div_foto">    
-    <img id="foto" onclick="mostra_foto(0)">
-    <i id="icona_camera" class="fa-solid fa-image"></i>    
-  </div>
-  <div id="div_control">    
-      <label for="obturador">    
-        <i class="fa-solid fa-circle-dot" onclick=""></i>    
-        <input type="file" accept="image/*" id="obturador" capture="camera"> 
-         <i id="desa" class="fa-solid fa-check" onclick="desa_foto()"></i>
-         </label>
-  </div>
-      <canvas id="canvas"></canvas>
-<div id="div_gran">
-  <img id="foto_gran" onclick="retorn_a_seccio()" />
-</div>
-</div>
+   <div id="seccio_2" class="seccio">    <!-- espai central per mostrar contingut --> 
+            <div id="div_foto">    <!-- contenidor de la vista prèvia de la foto feta -->
+                <img id="foto" onclick="mostra_foto(0)">
+                <i id="icona_camera" class="fa-solid fa-image"></i>    <!-- icona que ocupa l'espai quan encara no s'ha fet la foto -->
+            </div>
+            <div id="div_control">    <!-- contenidor dels botons per fer i desar la foto -->
+                <label for="obturador">    <!-- etiqueta auxiliar per ocultar el botó predeterminat -->
+                 <i class="fa-solid fa-circle-dot"></i>    <!-- icona del botó per fer la foto -->
+                    <input type="file" accept="image/*" id="obturador" capture="camera" /> <!-- element que captura la imatge -->
+                </label>
+                
+                
+                <i class="fa-solid fa-check" onclick="desa_foto()"></i>    <!-- icona del botó per desar la foto -->
+                
+            </div>
        <div id="seccio_3" class="seccio">
   <div id="llista_titol">    
     <i class="fa-solid fa-image"></i>    
