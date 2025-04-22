@@ -2,6 +2,9 @@ let validat = false;    // variable que permet saber si hi ha algun usuari valid
 let nom, contrasenya;
 let scriptURL = "https://script.google.com/macros/s/AKfycbxln8tQ7ZeR4DxEhFmN_nUYzcQ5zSprWGd_0gmD8aivRuzHywSMVNsS3ie8ojJR7E7x/exec"    // s'ha de substituir la cadena de text per la URL del script
 let model, webcam, prediccions, maxPrediccions;
+let canvas_creat = false;
+let diagrama;
+let valors = [[],[]];
 function canvia_seccio(num_boto) {
     if (num_boto == 3) {    // si es prem el botó de la secció "Galeria"
     omple_llista();
@@ -269,4 +272,23 @@ async function prediu() {
         const classe = prediccio[i].className + ": " + prediccio[i].probability.toFixed(2);    // es conserven dues xifres decimals
         prediccions.childNodes[i].innerHTML = classe;
     }
+}
+function mostra_diagrama() {
+    if (!canvas_creat) {    // només si no s'ha creat anteriorment
+        diagrama = new Chart(document.getElementById("diagrama"), {
+            type : 'line',    // tipus de diagrama
+            data : {
+                labels : valors[0],    // etiquetes de l'eix X
+                datasets : [
+                        {
+                            data : valors[1],    // valors mesurats
+                            label : "Nivell de llum",    // títol del diagrama
+                            borderColor : "blue",    // color de la línia
+                        }]
+            },
+        });
+        peticio();    // funció que sol·licita el valor més recent del canal de ThingSpeak
+        setInterval(peticio, 20000);    // es sol·licita un valor cada 20 segons, un interval de temps adient per a l'entorn ThingSpeak
+        canvas_creat = true;
+    } 
 }
