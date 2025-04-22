@@ -6,6 +6,12 @@ function canvia_seccio(num_boto) {
     if (num_boto == 3) {    // si es prem el botó de la secció "Galeria"
     omple_llista();
 }
+    if (num_boto == 4) {
+    mapa.invalidateSize();
+    if (typeof geoID === "undefined") {    // si encara no s'han obtingut les dades de localització del dispositiu
+        navigator.geolocation.watchPosition(geoExit);    // inicia el seguiment de la localització del dispositiu
+    }
+}
     const menu = document.getElementById("menu");
     const num_botons = menu.children.length;    // el nombre de botons dins de l'element "menu"
     for (let i = 1; i < num_botons; i++) {
@@ -105,6 +111,21 @@ window.onload = () => {
             }
         }
     });
+    mapa = L.map("seccio_4").setView([41.72, 1.82], 8);    // assigna el mapa a la secció, centrat en el punt i amb el nivell de zoom
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {    // capa d'OpenStreetMap
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'    // autoria de la capa
+}).addTo(mapa);    // s'afegeix la capa al mapa
+    let vegueries = [[41.39, 2.17, "Àmbit metropolità (Barcelona)"],    // llista on cada element és una llista amb els valors de latitud, longitud i nom de vegueria com a elements
+                 [42.17, 0.89, "Alt Pirineu i Aran (Tremp)"],
+                 [41.12, 1.24, "Camp de Tarragona (Tarragona)"],
+                 [41.73, 1.83 ,"Comarques centrals (Manresa)"],
+                 [41.98, 2.82, "Comarques gironines (Girona)"],
+                 [41.62, 0.62, "Ponent (Lleida)"],
+                 [40.81, 0.52, "Terres de l'Ebre (Tortosa)"],
+                 [41.35, 1.70, "Penedès (Vilafranca del Penedès"]];
+for (i in vegueries) {    // per cada element de la llista
+    L.marker([vegueries[i][0], vegueries[i][1]],{title:vegueries[i][2]}).addTo(mapa);
+}
 }
 function desa_foto() {
     let nou_registre = {    // contingut del nou registre de la base de dades
@@ -192,5 +213,14 @@ function esborra_foto(id) {
                 canvia_seccio(3);    // es recarrega la galeria per tal que ja no mostri la foto esborrada
             };
         };
+    }
+}
+function geoExit(posicio){
+    let latitud = posicio.coords.latitude;
+    let longitud = posicio.coords.longitude;
+    if (typeof geoID === "undefined") {    
+        geoID = L.marker([latitud, longitud], {zIndexOffset:100, title:"Usuari"}).addTo(mapa);    // es defineix el marcador  geoID i es situa per sobre dels altres
+    } else {    // primeres dades de localització, es crea el marcador d'usuari 
+        geoID.setLatLng([latitud, longitud]);    // actualització de la posició del marcador d'usuari en el mapa
     }
 }
