@@ -88,10 +88,7 @@ function nou_usuari() {
 function tanca_sessio() {
     if (validat) {
         let vull_sortir = window.confirm("Vols tancar la sessiÃ³?");
-        if (vull_sortir) {
-            storage.setItem("usuari", "");
             location.reload();
-        }
     }
 }
 window.onload = () => {
